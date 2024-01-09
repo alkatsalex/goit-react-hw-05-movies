@@ -9,7 +9,6 @@ export default function Movies() {
   const [search, setSearch] = useState('');
 
   const location = useLocation();
-  console.log(location);
 
   const hendleSearch = e => {
     setSearch(e.currentTarget.value.toLowerCase());
