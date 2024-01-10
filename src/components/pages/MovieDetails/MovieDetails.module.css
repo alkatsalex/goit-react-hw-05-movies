@@ -1,0 +1,31 @@
+.card {
+  display: flex;
+  color: aliceblue;
+}
+
+.poster {
+  margin-right: 30px;
+  margin-left: 50px;
+  width: 400px;
+}
+
+.title {
+  font-size: 38px;
+}
+
+.genresList {
+  display: flex;
+  gap: 7px;
+  margin-bottom: 40px;
+}
+
+.additionalInfo {
+  display: flex;
+  gap: 10px;
+}
+
+.additionalInfo a {
+  color: aliceblue;
+  font-size: 20px;
+  text-decoration-line: underline;
+}

@@ -18,12 +18,18 @@ export default function Reviews() {
 
   return (
     <ul>
-      {reviews.map(({ author, content, id }) => (
-        <li key={id}>
-          <p>{author}</p>
-          <p>{content}</p>
-        </li>
-      ))}
+      {reviews[0] ? (
+        reviews.map(({ author, content, id }) => (
+          <li key={id}>
+            <p>
+              <b>{author}</b>
+            </p>
+            <p>{content}</p>
+          </li>
+        ))
+      ) : (
+        <h3>No info</h3>
+      )}
     </ul>
   );
 }

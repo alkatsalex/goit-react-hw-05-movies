@@ -1,48 +1,38 @@
 import { useEffect, useState } from 'react';
 import Searchbar from 'components/SearchBar/SearchBar';
 import api from 'api/MOVIESAPI';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import Film from 'components/Film/Film';
 
 export default function Movies() {
-  const [searchTag, setSearchTag] = useState(null);
   const [searchResult, setSearchResult] = useState([]);
-  const [search, setSearch] = useState('');
 
+  const [sp] = useSearchParams();
+  const qwery = sp.get('search');
   const location = useLocation();
 
-  const hendleSearch = e => {
-    setSearch(e.currentTarget.value.toLowerCase());
-  };
-
-  const hendleFormSubmit = tag => {
-    setSearchTag(tag);
-  };
-
+  console.log(sp.get('search'));
   useEffect(() => {
+    console.log('qwe', qwery);
     async function fetchQuery() {
-      const data = await api.queryFetch(searchTag);
-      console.log(data);
+      const data = await api.queryFetch(qwery);
       setSearchResult([...data.results]);
     }
 
     fetchQuery();
-  }, [searchTag]);
-
-  console.log(searchResult);
+  }, [qwery, sp]);
 
   return (
     <div>
-      <Searchbar
-        value={search}
-        onChange={hendleSearch}
-        onSubmit={hendleFormSubmit}
-      />
-      {searchTag &&
+      <Searchbar />
+      {qwery &&
         searchResult.map(foundMovie => (
           <div key={foundMovie.id}>
-            <Link to={`${foundMovie.id}`} state={{ from: location }}>
-              <h3>{foundMovie.title}</h3>
-            </Link>
+            <Film
+              id={foundMovie.id}
+              title={foundMovie.title}
+              locations={location}
+            />
           </div>
         ))}
     </div>

@@ -1,0 +1,12 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.item {
+  width: 200px;
+}
+
+.cast {
+  width: 200px;
+}

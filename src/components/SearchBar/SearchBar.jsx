@@ -1,30 +1,38 @@
-export default function Searchbar({ value, onChange, onSubmit }) {
+import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import css from './SearchBar.module.css';
+
+export default function Searchbar() {
+  const [search, setSearch] = useState('');
+  const [sp, setSP] = useSearchParams();
   const handleSubmit = e => {
     e.preventDefault();
-    if (value.trim() === '') {
+    if (search.trim() === '') {
       alert('Ops! Something went wrong, enter a query in the search term');
       return;
     }
-    onSubmit(value);
+    setSP({ search: search });
+  };
+  console.log(sp.get('search'));
+  const hendleSearch = e => {
+    setSearch(e.currentTarget.value.toLowerCase());
   };
 
   return (
-    <header className="Searchbar">
-      <form className="SearchForm" onSubmit={handleSubmit}>
-        <button type="submit" className="SearchForm-button">
-          <span className="button-label">🔎</span>
-        </button>
+    <form className={css.SearchForm} onSubmit={handleSubmit}>
+      <button type="submit" className={css.SearchFormButton}>
+        <span className={css.buttonLabel}>🔎</span>
+      </button>
 
-        <input
-          className="SearchForm-input"
-          type="text"
-          autoComplete="off"
-          autoFocus
-          value={value}
-          placeholder="Search images and photos"
-          onChange={onChange}
-        />
-      </form>
-    </header>
+      <input
+        className={css.SearchFormInput}
+        type="text"
+        autoComplete="off"
+        autoFocus
+        value={search}
+        placeholder="Search images and photos"
+        onChange={hendleSearch}
+      />
+    </form>
   );
 }
