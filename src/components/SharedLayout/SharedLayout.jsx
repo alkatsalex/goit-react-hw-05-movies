@@ -14,7 +14,7 @@ export default function SharedLayout() {
           </NavLink>
           <NavLink to="/movies">
             <p className={css.navItem}>
-              <b>Movise</b>
+              <b>Movies</b>
             </p>
           </NavLink>
         </nav>

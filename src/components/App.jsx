@@ -8,7 +8,7 @@ import { lazy, Suspense } from 'react';
 // import Reviews from './Reviews/Reviews';
 
 const Home = lazy(() => import('./pages/Home/Home'));
-const Movies = lazy(() => import('./pages/Movise/Movise'));
+const Movies = lazy(() => import('./pages/Movies/Movise'));
 const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
 const MovieDetails = lazy(() => import('./pages/MovieDetails/MovieDetails'));
 const Cast = lazy(() => import('./Cast/Cast'));
