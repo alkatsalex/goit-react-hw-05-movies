@@ -70,10 +70,10 @@ export default function MovieDetails() {
               ))}
           </ul>
           <div className={css.additionalInfo}>
-            <Link to="cast">
+            <Link to="cast" state={{ from: backLinkHref }}>
               <p>Cast</p>
             </Link>
-            <Link to="reviews">
+            <Link to="reviews" state={{ from: backLinkHref }}>
               <p>Reviews</p>
             </Link>
             <Outlet />
